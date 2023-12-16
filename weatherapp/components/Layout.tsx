@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 interface WeatherProps {
   defaultCity?: string,
-  title: string;
+  title?: string;
 }
 
 const Weather: React.FC<WeatherProps> = ({ defaultCity = 'New York' }) => {

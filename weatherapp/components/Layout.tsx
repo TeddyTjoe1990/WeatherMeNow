@@ -1,14 +1,16 @@
+// components/Weather.tsx
 import React, { useState } from 'react';
 
 interface WeatherProps {
-  defaultCity?: string;
+  defaultCity?: string,
+  title: string;
 }
 
-const Weather: React.FC<WeatherProps> = () => {
-  const [city, setCity] = useState('');
+const Weather: React.FC<WeatherProps> = ({ defaultCity = 'New York' }) => {
+  const [city, setCity] = useState(defaultCity);
   const [weatherData, setWeatherData] = useState(null);
 
-  const apiKey = '93b04ac2e3dafc69e377e21afa088063'; 
+  const apiKey = '93b04ac2e3dafc69e377e21afa088063';
 
   const fetchWeatherData = async () => {
     try {
@@ -29,7 +31,7 @@ const Weather: React.FC<WeatherProps> = () => {
 
   return (
     <div>
-      <h2>Weather Me Now</h2>
+      <h2>Weather App</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="city">Enter City:</label>
         <input
@@ -45,7 +47,7 @@ const Weather: React.FC<WeatherProps> = () => {
       {weatherData && (
         <div>
           <h3>Current Weather</h3>
-          <p>Your City: {weatherData.name}</p>
+          <p>City: {weatherData.name}</p>
           <p>Temperature: {weatherData.main.temp}°C</p>
           <p>Conditions: {weatherData.weather[0].description}</p>
         </div>
